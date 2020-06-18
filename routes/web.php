@@ -20,6 +20,12 @@ Route::get('/', function () {
     return view('welcome', ['helloWorld' => $helloWorld]);
 });
 
+Route::get('/model', function(){
+    $products = \App\Product::all(); //select * from products
+
+    return $products;
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
