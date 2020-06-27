@@ -44,7 +44,7 @@ Route::get('/model', function(){
     //    'email' => 'habel@gmail.com',
     //    'password' => bcrypt('iau')
     //]);
-    
+
     //Mass Update
     //$user = \App\User::find(42);
     //$user->update([
@@ -55,14 +55,14 @@ Route::get('/model', function(){
     //$user = \App\User::find(4);
     //return $user->store; - Retorna o objeto unico (Store)
 
-    //Como pegar produtos de uma loja 
+    //Como pegar produtos de uma loja
     //$loja = \App\Store::find(1);
     //return $loja->products; - Retorna coleçao (Products)
 
     //Como pegar lojas de uma categoria
     //$categoria = \App\Category::find(1);
     //$categoria->products;
-    
+
     //Criar uma loja para um usuario
     //$user = \App\User::find(10);
     //$store = $user->store()->create([
@@ -110,6 +110,14 @@ Route::get('/model', function(){
 });
 
 Route::get('/admin/stores', 'Admin\\StoreController@index');
+
+Route::get('/admin/stores/create', 'Admin\\StoreController@create');
+
+Route::post('/admin/stores/store', 'Admin\\StoreController@store');
+
+
+
+
 
 Auth::routes();
 
