@@ -109,6 +109,8 @@ Route::get('/model', function(){
 
 });
 
+Route::get('/admin/stores', 'Admin\\StoreController@index');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
