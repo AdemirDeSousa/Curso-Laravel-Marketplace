@@ -50,7 +50,61 @@ Route::get('/model', function(){
     //$user->update([
     //    'name' => 'Habel Atualizado com o Mass Update'
     //]); //Retorna True ou False
+
+    //Como pegar loja de um usuario
+    //$user = \App\User::find(4);
+    //return $user->store; - Retorna o objeto unico (Store)
+
+    //Como pegar produtos de uma loja 
+    //$loja = \App\Store::find(1);
+    //return $loja->products; - Retorna coleçao (Products)
+
+    //Como pegar lojas de uma categoria
+    //$categoria = \App\Category::find(1);
+    //$categoria->products;
     
+    //Criar uma loja para um usuario
+    //$user = \App\User::find(10);
+    //$store = $user->store()->create([
+    //    'name' => 'Loja Teste',
+    //    'description' => 'Loja Teste de produtos de informatica',
+    //    'mobile_phone' => '000000000',
+    //    'phone' => '0000000',
+    //    'slug' => 'loja-teste'
+    //]);
+
+    //dd($store);
+
+    //Criar um produto para uma loja
+    //$store =\App\Store::find(41);
+    //$products = $store->products()->create([
+    //    'name' => 'Notebook Dell',
+    //    'description' => 'Core i5 8gb ram',
+    //    'body' => 'iau',
+    //    'price' => 2999.90,
+    //    'slug' => 'notebook-dell'
+    //]);
+
+    //dd($products);
+
+    //Criar duas categoria
+    //\App\Category::create([
+    //    'name' => 'Games',
+    //    'description' => 'Eletronic Games',
+    //    'slug' => 'games'
+    //]);
+
+    //\App\Category::create([
+    //    'name' => 'Notebooks',
+    //    'description' => 'Notebooks',
+    //    'slug' => 'notebooks'
+    //]);
+
+    //return \App\Category::all();
+
+    //Adicionar um produto para uma categoria ou vice versa
+    //$products = \App\Product::find(48);
+    //dd($products->categories()->sync([2]));  //attach: adicionar, detach: remover
     return \App\User::all();
 
 });
