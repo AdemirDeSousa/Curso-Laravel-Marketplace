@@ -109,16 +109,16 @@ Route::get('/model', function(){
 
 });
 
-Route::get('/admin/stores', 'Admin\\StoreController@index');
 
-Route::get('/admin/stores/create', 'Admin\\StoreController@create');
+Route::prefix('/admin')->namespace('Admin')->group(function(){
 
-Route::post('/admin/stores/store', 'Admin\\StoreController@store');
+    Route::prefix('/stores')->group(function(){
 
+        Route::get('/', 'StoreController@index'); //Exibir Todas as Lojas
+        Route::get('/create', 'StoreController@create'); //Criar uma Loja
+        Route::post('/store', 'StoreController@store'); //Salvar Loja
 
+    });
 
+});
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
