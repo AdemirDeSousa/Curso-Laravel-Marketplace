@@ -110,16 +110,16 @@ Route::get('/model', function(){
 });
 
 
-Route::prefix('/admin')->namespace('Admin')->group(function(){
+Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function(){
 
-    Route::prefix('/stores')->group(function(){
+    Route::prefix('/stores')->name('stores.')->group(function(){
 
-        Route::get('/', 'StoreController@index'); //Exibir Todas as Lojas
-        Route::get('/create', 'StoreController@create'); //Formulario de Criar uma Loja
-        Route::post('/store', 'StoreController@store'); //Salvar Loja
-        Route::get('/{store}/edit', 'StoreController@edit'); //Formulario de Editando uma Loja
-        Route::post('/update/{store}', 'StoreController@update'); //Atualizando Loja
-        Route::get('/destroy/{store}', 'StoreController@destroy'); //Deletando Loja
+        Route::get('/', 'StoreController@index')->name('index'); //Exibir Todas as Lojas
+        Route::get('/create', 'StoreController@create')->name('create'); //Formulario de Criar uma Loja
+        Route::post('/store', 'StoreController@store')->name('store'); //Salvar Loja
+        Route::get('/{store}/edit', 'StoreController@edit')->name('edit'); //Formulario de Editando uma Loja
+        Route::post('/update/{store}', 'StoreController@update')->name('update'); //Atualizando Loja
+        Route::get('/destroy/{store}', 'StoreController@destroy')->name('destroy'); //Deletando Loja
 
     });
 
