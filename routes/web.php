@@ -115,8 +115,10 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
     Route::prefix('/stores')->group(function(){
 
         Route::get('/', 'StoreController@index'); //Exibir Todas as Lojas
-        Route::get('/create', 'StoreController@create'); //Criar uma Loja
+        Route::get('/create', 'StoreController@create'); //Formulario de Criar uma Loja
         Route::post('/store', 'StoreController@store'); //Salvar Loja
+        Route::get('/{store}/edit', 'StoreController@edit'); //Formulario de Editando uma Loja
+        Route::post('/update/{store}', 'StoreController@update'); //Atualizando Loja
 
     });
 
