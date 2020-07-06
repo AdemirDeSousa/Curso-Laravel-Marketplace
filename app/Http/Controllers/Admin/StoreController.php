@@ -18,6 +18,7 @@ class StoreController extends Controller
 
         $users = \App\User::all(['id', 'name']);
         return view('admin.stores.create', compact('users'));
+
     }
 
     public function store(Request $request){
@@ -27,7 +28,10 @@ class StoreController extends Controller
         $user = \App\User::find($data['user']);
         $store = $user->store()->create($data);
 
-        return $store;
+        flash('Loja Criada com Sucesso')->success();
+
+        return redirect()->route('admin.stores.index');
+
     }
 
     public function edit($store){
@@ -35,6 +39,7 @@ class StoreController extends Controller
         $store = \App\Store::find($store);
 
         return view('admin.stores.edit', compact('store'));
+
     }
 
     public function update(Request $request, $store){
@@ -45,7 +50,10 @@ class StoreController extends Controller
 
         $store->update($data);
 
-        return $store;
+        flash('Loja Atualizada com Sucesso')->success();
+
+        return redirect()->route('admin.stores.index');
+
     }
 
     public function destroy($store){
@@ -54,6 +62,9 @@ class StoreController extends Controller
 
         $store->delete();
 
-        return redirect('/admin/stores');
+        flash('Loja Removida com Sucesso')->success();
+
+        return redirect()->route('admin.stores.index');
+
     }
 }
