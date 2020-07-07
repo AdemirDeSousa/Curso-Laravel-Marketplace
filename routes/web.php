@@ -110,22 +110,30 @@ Route::get('/model', function(){
 });
 
 
-Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function(){
+Route::group(['middleware' => ['auth']], function () {
 
-    // Route::prefix('/stores')->name('stores.')->group(function(){
+    Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function(){
 
-    //     Route::get('/', 'StoreController@index')->name('index'); //Exibir Todas as Lojas
-    //     Route::get('/create', 'StoreController@create')->name('create'); //Formulario de Criar uma Loja
-    //     Route::post('/store', 'StoreController@store')->name('store'); //Salvar Loja
-    //     Route::get('/{store}/edit', 'StoreController@edit')->name('edit'); //Formulario de Editando uma Loja
-    //     Route::post('/update/{store}', 'StoreController@update')->name('update'); //Atualizando Loja
-    //     Route::get('/destroy/{store}', 'StoreController@destroy')->name('destroy'); //Deletando Loja
+        // Route::prefix('/stores')->name('stores.')->group(function(){
 
-    // });
-    Route::resource('stores', 'StoreController');
-    Route::resource('products', 'ProductController');
+        //     Route::get('/', 'StoreController@index')->name('index'); //Exibir Todas as Lojas
+        //     Route::get('/create', 'StoreController@create')->name('create'); //Formulario de Criar uma Loja
+        //     Route::post('/store', 'StoreController@store')->name('store'); //Salvar Loja
+        //     Route::get('/{store}/edit', 'StoreController@edit')->name('edit'); //Formulario de Editando uma Loja
+        //     Route::post('/update/{store}', 'StoreController@update')->name('update'); //Atualizando Loja
+        //     Route::get('/destroy/{store}', 'StoreController@destroy')->name('destroy'); //Deletando Loja
 
+        // });
+        Route::resource('stores', 'StoreController');
+        Route::resource('products', 'ProductController');
+
+    });
 });
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 
