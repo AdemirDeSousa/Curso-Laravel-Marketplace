@@ -13,7 +13,7 @@ class StoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,21 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+
+            'name' => 'required',
+            'description' => 'required|min:10',
+            'phone' => 'required',
+            'mobile_phone' => 'required',
+        ];
+    }
+
+
+    public function messages(){
+
+        return [
+            'required' => 'Campo obrigatorio.',
+            'min' => 'Campo deve ter no minino :min caracteres.',
+
         ];
     }
 }
