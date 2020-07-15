@@ -39,11 +39,6 @@ class StoreController extends Controller
 
         if($request->hasfile('logo')){
 
-            if(Storage::disk('public')->exists($store->logo)){
-
-                Storage::disk('public')->delete($store->logo);
-            }
-
             $data['logo'] = $this->imageUpload($request->file('logo'));
 
         }
