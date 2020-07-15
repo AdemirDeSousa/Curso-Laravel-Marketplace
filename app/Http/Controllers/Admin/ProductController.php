@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Http\Requests\ProductRequest;
+use App\Traits\UploadTrait;
 
 class ProductController extends Controller
 {
+
+    use UploadTrait;
 
     private $product;
 
@@ -63,7 +66,7 @@ class ProductController extends Controller
         $product->categories()->sync($data['categories']);
 
         if($request->hasfile('photos')){
-            $images = $this->imageUpload($request, 'image');
+            $images = $this->imageUpload($request->file('photos'), 'image');
             //Inserir referencias das imagens na base
 
             $product->photos()->createMany($images);
@@ -117,7 +120,7 @@ class ProductController extends Controller
         $product->categories()->sync($data['categories']);
 
         if($request->hasfile('photos')){
-            $images = $this->imageUpload($request, 'image');
+            $images = $this->imageUpload($request->file('photos'), 'image');
             //Inserir referencias das imagens na base
 
             $product->photos()->createMany($images);
@@ -146,17 +149,4 @@ class ProductController extends Controller
         return redirect()->route('admin.products.index');
     }
 
-    private function imageUpload(Request $request, $imageColumn){
-
-        $images = $request->file('photos');
-
-        $uploadedImages = [];
-
-        foreach($images as $image){
-            $uploadedImages[] = [$imageColumn => $image->store('products', 'public')];
-        }
-
-        return $uploadedImages;
-
-    }
 }
