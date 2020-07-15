@@ -13,12 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-
-    $helloWorld = 'Hello World';
-
-    return view('welcome', ['helloWorld' => $helloWorld]);
-})->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/model', function(){
     //$products = \App\Product::all(); //select * from products
