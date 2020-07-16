@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('/product/{slug}', 'HomeController@single')->name('product.single');
+
 Route::get('/model', function(){
     //$products = \App\Product::all(); //select * from products
 
